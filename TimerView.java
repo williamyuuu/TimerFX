@@ -6,10 +6,7 @@ import javafx.scene.paint.*;
 import javafx.geometry.*;
 import javafx.event.*;
 
-import javafx.application.*;
-import javafx.stage.*;
-
-public class TimerView extends Application{
+public class TimerView{
 
     MenuBar menuBar;
     Menu menuFile, menuOptions, menuHelp;
@@ -19,8 +16,8 @@ public class TimerView extends Application{
     Text textName, textMap, textCh, textPaid;
     VBox mainBox;
 
-    @Override
-    public void start(Stage primaryStage){
+
+    public TimerView(){
 
         // MenuBar,Menu,MenuItems --> MenuBar menuBar
         menuFile = new Menu("File");
@@ -73,13 +70,11 @@ public class TimerView extends Application{
         //VBox mainBox
         mainBox = new VBox(menuBar,buttons, subBox);
         mainBox.setSpacing(20);
+        mainBox.setStyle("-fx-background-color: LIGHTGREY");
 
-        Scene scene = new Scene(mainBox, 700, 300, Color.LIGHTGREY);
-        primaryStage.setTitle("JavaFX Timer");
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
-    public static void main(String[] args) {
-        launch(args);
+    public Parent getParent(){
+        return mainBox;
     }
+
 }
