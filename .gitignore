@@ -1,0 +1,14 @@
+# Java class files
+/*.class
+
+# Java tester files
+tester*
+
+# Notes files
+*.notes
+
+# XML files
+*.xml
+
+# File DS_Store not be pushed
+*.DS_Store
