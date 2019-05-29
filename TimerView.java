@@ -76,5 +76,8 @@ public class TimerView{
     public Parent getParent(){
         return mainBox;
     }
+    public void setButtonAddNewTimerAction(EventHandler<ActionEvent> handler){
+        buttonAddNewTimer.setOnAction(handler);
+    }
 
 }

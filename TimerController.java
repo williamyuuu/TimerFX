@@ -8,6 +8,9 @@ import javafx.stage.*;
 
 public class TimerController extends Application {
 
+    private int sceneWidth = 700; //This can possibly constant/final
+    private int sceneHeight = 300; //This is for changing mainBox when adding more timer rows
+
     //private TimerModel model;
     private TimerView inputView;
 
@@ -15,51 +18,25 @@ public class TimerController extends Application {
         //model = new TimerModel();
         inputView = new TimerView();
 
-        //inputView.setButtonAddAction(this::addWorker);
-        //inputView.setButtonDisplayWorkersAction(this::displayWorkers);
-        //inputView.setButtonProcessAction(this::displayProcess);
+        inputView.setButtonAddNewTimerAction(this::addNewTimer);
     }
-
     @Override
     public void start(Stage primaryStage){
         TimerController controller = new TimerController();
 
-        Scene scene = new Scene(controller.inputView.getParent(), 700, 300, Color.TRANSPARENT);
+        Scene scene = new Scene(controller.inputView.getParent(), sceneWidth, sceneHeight, Color.TRANSPARENT);
         primaryStage.setTitle("JavaFX Timer");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
-    /*
-    private void addWorker(ActionEvent event){
-        String name = inputView.getTextfieldName();
-        int id = inputView.getTextfieldID();
-        Shift shift = inputView.getComboShift();
-        Worker worker = new Leader(name, id, shift);
-        department.addWorker(worker);
-        inputView.setTextAction(name + " Added");
-        inputView.clearInputs();
+    private void addNewTimer(ActionEvent event){
+        System.out.println("New Timer Button Clicked");
+        // Everytime you add timer, update the View to be bigger height
+        //sceneHeight += 60;
     }
-    private void displayWorkers(ActionEvent event){
-        ArrayList<Worker> workerList = department.getWorkerList();
-        String output = "";
-        for (Worker worker : workerList) {
-            output += worker.getName() + " (ID: " + worker.getId() + ") [" + worker.getShift() + "]\n";
-        }
-        inputView.setTextareaResults(output);
-        inputView.setTextAction("Displaying Workers");
-    }
-    private void displayProcess(ActionEvent event){
-        ArrayList<Worker> workerList = department.getWorkerList();
-        String output = "";
-        for (Worker worker : workerList) {
-            output += worker.getName() + " (ID: " + worker.getId() + ") [" + worker.getShift() + "]" + worker.haveAccess() + "\n";
-        }
-        inputView.setTextareaResults(output);
-        inputView.setTextAction("Keys have been handed out");
-    }
-    */
+
     public static void main(String[] args) {
         launch(args);
     }
